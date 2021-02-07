@@ -62,6 +62,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let shareImage = cameraImageView.image!
         let activityItems: [Any] = [shareText, shareImage]
         let activityViewController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.size.width / 2.0, y:self.view.bounds.size.height / 2.0, width: 1.0, height: 1.0)
         let excludedActivityTypes = [UIActivity.ActivityType.postToWeibo, .saveToCameraRoll, .print]
         activityViewController.excludedActivityTypes = excludedActivityTypes
         present(activityViewController, animated: true, completion: nil)
